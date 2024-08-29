@@ -5,8 +5,9 @@ WORKDIR /usr/src/app
 COPY go.mod .
 COPY mensagem-entrada.go .
 
-RUN go build -o /mensagem-entrada
+RUN go build -ldflags '-s -w' -o /mensagem-entrada
 
+# Não encontrei nenhuma imagem menor, nem como filtrar ou classificar por tamanho no Dockerhub
 FROM scratch
 
 WORKDIR /
